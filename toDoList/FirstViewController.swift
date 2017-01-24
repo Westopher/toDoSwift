@@ -10,9 +10,13 @@ import UIKit
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet var table: UITableView!
+    
+    var items: [String] = []
+    
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-       return 1
+       return items.count
         
     }
     
@@ -20,15 +24,31 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
         
-        cell.textLabel?.text = "test"
+        
+        cell.textLabel?.text = items[indexPath.row]
         
         return cell
         
-    }
+        
+        }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        let itemsObject = UserDefaults.standard.object(forKey: "items")
+        
+        if let tempItems = itemsObject as? [String] {
+            
+            items = tempItems
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {

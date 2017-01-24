@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -49,6 +50,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="To Do List" image="first" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="table" destination="gFE-yt-qOh" id="SDF-1H-vZa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -66,17 +70,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hh5-Fj-Tvl">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E.g. Get Milk" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hh5-Fj-Tvl">
                                 <rect key="frame" x="16" y="92" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="8rJ-Kc-sve" id="3fS-fZ-W2Q"/>
+                                </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2q0-m6-3HZ">
-                                <rect key="frame" x="164" y="130" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2q0-m6-3HZ">
+                                <rect key="frame" x="172" y="130" width="30" height="30"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="add:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="8a7-Ar-gdN"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add an Item..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PnD-cl-CT9">
                                 <rect key="frame" x="134" y="46" width="106" height="21"/>
@@ -87,11 +95,19 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="2q0-m6-3HZ" firstAttribute="top" secondItem="hh5-Fj-Tvl" secondAttribute="bottom" constant="8" id="1ri-Pn-eMb"/>
+                            <constraint firstItem="hh5-Fj-Tvl" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="BTi-y9-6Hr"/>
+                            <constraint firstItem="hh5-Fj-Tvl" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="QDg-jt-cK4"/>
+                            <constraint firstItem="hh5-Fj-Tvl" firstAttribute="top" secondItem="PnD-cl-CT9" secondAttribute="bottom" constant="25" id="aFa-Of-QIE"/>
                             <constraint firstItem="PnD-cl-CT9" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="g89-1b-zY2"/>
+                            <constraint firstItem="2q0-m6-3HZ" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="rGl-Vq-Qyr"/>
                             <constraint firstItem="PnD-cl-CT9" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="26" id="sWh-Vi-E40"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Add an item" image="second" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="itemTextField" destination="hh5-Fj-Tvl" id="MXa-MX-sIl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
